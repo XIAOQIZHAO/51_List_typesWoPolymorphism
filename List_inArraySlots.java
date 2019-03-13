@@ -117,12 +117,18 @@ public class List_inArraySlots {
 	typeOfElements = biggerType;
      }
 
-    public Element get(int index){
-	Element ele = new Element(typeOfElements[index],
-				  intElements[index],
-				  doubleElements[index],
-				  stringElements[index]);
-	return ele;
+  public String get(int index){
+    if (typeOfElements[index] == 0)
+      return intElements[index] + "";
+    else if (typeOfElements[index] == 1)
+      return doubleElements[index] + "";
+    else
+      return stringElements[index];
+	//    Element ele = new Element(typeOfElements[index],
+	// 			  intElements[index],
+	// 			  doubleElements[index],
+	// 			  stringElements[index]);
+	// return ele;
 	
     }
 }
