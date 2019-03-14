@@ -88,7 +88,13 @@ public class List_inArraySlots {
 	list = biggerList;
      }
 
-  public Element get(int index){
-      return list[index];
+    public Element get(int index){
+	return list[index];
+    }
+
+    public Element getBackwards(int index){
+	if (filledElements < index)
+	    return new Element(2,0,0.0,"N/A");
+	return list[filledElements - index];
     }
 }

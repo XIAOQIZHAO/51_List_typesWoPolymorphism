@@ -40,5 +40,13 @@ public class UserOfList {
 	System.out.println("element 0: " + list.get(0));
 	System.out.println("element 9: " + list.get(9));
 	System.out.println("element 18: " + list.get(18));
+	
+	System.out.println("backward element 3: " + list.getBackwards(3));
+	System.out.println("backward element 0: " + list.getBackwards(0));
+	System.out.println("backward element 9: " + list.getBackwards(9));
+	System.out.println("backward element 18: " + list.getBackwards(18));
+
+
+	
     }
 }
