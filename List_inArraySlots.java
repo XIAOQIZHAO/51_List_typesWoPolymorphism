@@ -6,9 +6,6 @@
 
 public class List_inArraySlots {
 
-    private int[]    intElements;
-    private double[] doubleElements;
-    private String[] stringElements;
     private int filledElements; // the number of elements in this list
     
     /* type identifier for each element
@@ -18,7 +15,9 @@ public class List_inArraySlots {
         Optional extra education in programming (not comp sci):
             replace these "magic numbers" with an "enumerated type".
      */
-    private int[] typeOfElements;
+    // private int[] typeOfElements;
+
+    private Element[] list;
 
     private static final int INITIAL_CAPACITY = 10;
 
@@ -26,10 +25,7 @@ public class List_inArraySlots {
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
-	intElements = new int[INITIAL_CAPACITY];
-	doubleElements = new double[INITIAL_CAPACITY];
-	stringElements = new String[INITIAL_CAPACITY];
-	typeOfElements = new int[INITIAL_CAPACITY];
+        list = new Element[INITIAL_CAPACITY];
     }
 
 
@@ -48,12 +44,7 @@ public class List_inArraySlots {
     public String toString() {
 	String result = "[";
         for( int elemIndex = 0; elemIndex < filledElements; elemIndex++){
-	    if (typeOfElements[elemIndex] == 0)
-		result += intElements[ elemIndex] + ",";
-	    else if (typeOfElements[elemIndex] == 1)
-		result += doubleElements[ elemIndex] + ",";
-	    else
-		result += stringElements[ elemIndex] + ",";
+	    result += list[ elemIndex] + ",";
 	}
         return result + "]";
     }
@@ -64,21 +55,15 @@ public class List_inArraySlots {
 
       @return true, in keeping with conventions yet to be discussed
      */
-     public boolean add( int type   // same meaning as in typeOfElements
+     public boolean add( int type
                        , int    intValue
                        , double doubleValue
                        , String stringValue
                        ) {
-	 if (filledElements == typeOfElements.length) expand();
+	 if (filledElements == list.length) expand();
 	 
-	 if (type == 0)
-	     intElements[filledElements] = intValue;
-	 else if (type == 1)
-	     doubleElements[filledElements] = doubleValue;
-	 else
-	     stringElements[filledElements] = stringValue;
+	 list[filledElements] = new Element(type, intValue, doubleValue, stringValue);
 	 
-	 typeOfElements[filledElements] = type;
 	 filledElements++;
 	 return true;
      }
@@ -96,30 +81,14 @@ public class List_inArraySlots {
               this method is called when that is appropriate.
               So test using the println(), then comment it out.
               */
-	int[] biggerInt = new int[typeOfElements.length * 2];
-	double[] biggerDouble = new double[typeOfElements.length * 2];
-	String[] biggerString = new String[typeOfElements.length * 2];
-	int[] biggerType = new int[typeOfElements.length * 2];
-	
+	Element[] biggerList = new Element[filledElements * 2];
 	for (int i = 0; i < filledElements; i++){
-	    biggerInt[i] = intElements[i];
-	    biggerDouble[i] = doubleElements[i];
-	    biggerString[i] = stringElements[i];
-	    biggerType[i] = typeOfElements[i];
+	    biggerList[i] = list[i];
 	}
-	
-	intElements = biggerInt;
-	doubleElements = biggerDouble;
-	stringElements = biggerString;
-	typeOfElements = biggerType;
+	list = biggerList;
      }
 
-    public Element get(int index){
-	Element ele = new Element(typeOfElements[index],
-				  intElements[index],
-				  doubleElements[index],
-				  stringElements[index]);
-	return ele;
-	
+  public Element get(int index){
+      return list[index];
     }
 }
