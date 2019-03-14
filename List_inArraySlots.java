@@ -89,6 +89,15 @@ public class List_inArraySlots {
      }
 
   public Element get(int index){
+<<<<<<< HEAD
       return list[index];
+=======
+	Element ele = new Element(typeOfElements[index],
+	intElements[index],
+	doubleElements[index],
+	stringElements[index]);
+	return ele;
+	
+>>>>>>> 115ba0435e759ebeac71acb7fda98f21e71bf1d6
     }
 }
