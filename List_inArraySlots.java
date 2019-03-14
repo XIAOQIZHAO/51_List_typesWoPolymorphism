@@ -97,23 +97,20 @@ public class List_inArraySlots {
               So test using the println(), then comment it out.
               */
 	int[] biggerInt = new int[typeOfElements.length * 2];
-	for (int i = 0; i < filledElements; i++)
-	    biggerInt[i] = intElements[i];
-	intElements = biggerInt;
-	
 	double[] biggerDouble = new double[typeOfElements.length * 2];
-	for (int i = 0; i < filledElements; i++)
-	    biggerDouble[i] = doubleElements[i];
-	doubleElements = biggerDouble;
-	
 	String[] biggerString = new String[typeOfElements.length * 2];
-	for (int i = 0; i < filledElements; i++)
-	    biggerString[i] = stringElements[i];
-	stringElements = biggerString;
-
 	int[] biggerType = new int[typeOfElements.length * 2];
-	for (int i = 0; i < filledElements; i++)
+	
+	for (int i = 0; i < filledElements; i++){
+	    biggerInt[i] = intElements[i];
+	    biggerDouble[i] = doubleElements[i];
+	    biggerString[i] = stringElements[i];
 	    biggerType[i] = typeOfElements[i];
+	}
+	
+	intElements = biggerInt;
+	doubleElements = biggerDouble;
+	stringElements = biggerString;
 	typeOfElements = biggerType;
      }
 
